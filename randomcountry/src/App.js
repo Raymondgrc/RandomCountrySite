@@ -24,10 +24,11 @@ class App extends Component {
 
     if (this.state.countries) {
       let condensedApi = this.state.countries;
+      let randomIndex = this.state.randomCountryIndex;
       countryInfo = (
         <div>
-          {condensedApi[this.state.randomCountryIndex].name}
-          <img src={condensedApi[this.state.randomCountryIndex].flag}/>
+          {condensedApi[randomIndex].name}
+          <img src={condensedApi[randomIndex].flag}/>
       </div>
       )
     }
