@@ -20,9 +20,21 @@ class App extends Component {
   }
 
   render() {
+    let countryInfo = null;
+
+    if (this.state.countries) {
+      let condensedApi = this.state.countries;
+      countryInfo = (
+        <div>
+          {condensedApi[this.state.randomCountryIndex].name}
+          <img src={condensedApi[this.state.randomCountryIndex].flag}/>
+      </div>
+      )
+    }
+
     return (
       <div className="App">
-        {this.state.countries ? this.state.countries[this.state.randomCountryIndex].name : 'Country'}
+        {countryInfo}
       </div>
     );
   }
