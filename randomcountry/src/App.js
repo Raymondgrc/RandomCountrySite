@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 class App extends Component {
   state = {
@@ -46,11 +47,10 @@ class App extends Component {
 
 
     return (
-      <div className="App">
+      <CssBaseline>
         {countryInfo}
-      <div id="map" style={{height: '600px'}}>
-      </div>
-      </div>
+        <div id="map" style={{height: '600px'}}/>
+      </CssBaseline>
     );
   }
 }
