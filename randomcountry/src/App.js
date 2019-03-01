@@ -15,6 +15,17 @@ class App extends Component {
         countries: res.data,
         randomCountryIndex: this.generateRandomNumber(res.data.length)
       });
+      let map = new window.google.maps.Map(document.getElementById('map'), {
+        center: {lat: this.state.countries[this.state.randomCountryIndex].latlng[0], lng: this.state.countries[this.state.randomCountryIndex].latlng[1]},
+        zoom: 7,
+      });
+      var geocoder = new window.google.maps.Geocoder();
+      geocoder.geocode( { 'address': this.state.countries[this.state.randomCountryIndex].name}, function(results, status) {
+        if (status == window.google.maps.GeocoderStatus.OK) {
+          map.setCenter(results[0].geometry.location);
+          map.fitBounds(results[0].geometry.viewport);
+        }
+      });
     })
     .catch((err) => console.log(err))
   }
@@ -33,9 +44,12 @@ class App extends Component {
       )
     }
 
+
     return (
       <div className="App">
         {countryInfo}
+      <div id="map" style={{height: '600px'}}>
+      </div>
       </div>
     );
   }
