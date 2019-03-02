@@ -1,6 +1,20 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import CountryCard from './components/countryCard/CountryCard';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = theme => ({
+  root: {
+    backgroundColor: '#F1F1F1',
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  }
+});
 
 class App extends Component {
   state = {}
@@ -23,25 +37,22 @@ class App extends Component {
   }
 
   render() {
+    const { classes } = this.props;
     let countryCard = null;
     if (this.state.countries) {
       let {countries, randomCountryIndex} = this.state;
       countryCard = (
-        <div>
-          {countries[randomCountryIndex].name}
-          <img src={countries[randomCountryIndex].flag}/>
-        </div>
+          <CountryCard country={countries[randomCountryIndex].name} image={countries[randomCountryIndex].flag} />
       )
     }
 
 
     return (
-      <CssBaseline>
-        {countryCard}
-        <div id="map" style={{height: '600px'}}/>
-      </CssBaseline>
+        <div className={classes.root}>
+          {countryCard}
+        </div>
     );
   }
 }
 
-export default App;
+export default withStyles(styles) (App);
