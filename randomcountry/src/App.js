@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import CountryCard from './components/countryCard/CountryCard';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
   root: {
-    backgroundColor: '#F1F1F1',
+    backgroundColor: '#303030',
     width: '100%',
     height: '100%',
     display: 'flex',
